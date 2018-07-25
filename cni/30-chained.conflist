@@ -1,0 +1,28 @@
+{
+  "cniVersion": "0.3.1",
+  "name": "mynet",
+  "plugins": [
+    {
+      "type": "bridge",
+      "isGateway": true,
+      "ipMasq": true,
+      "bridge": "br0",
+      "ipam": {
+        "type": "host-local",
+        "subnet": "10.10.10.0/24",
+        "routes": [
+          { "dst": "0.0.0.0/0" }
+        ],
+        "dataDir": "/run/ipam-out-net"
+      },
+      "dns": {
+        "nameservers": [ "8.8.8.8" ]
+      }
+    },
+    {
+       "type": "portmap",
+       "capabilities": {"portMappings": true},
+       "snat": false
+    }
+  ]
+}
