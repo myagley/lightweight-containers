@@ -10,10 +10,16 @@ are installed in `/usr/local/bin`.
 
 ## Try it out
 ```
+# Get the rootfs for nginx
 cd nginx
 img pull nginx:1.15.1
 img unpack nginx:1.15.1
 
+# Create the container
 runc create nginx
 runc start nginx
+
+# Test that it works
+curl `hostname`:8080 -v
+
 ```
